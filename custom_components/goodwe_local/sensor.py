@@ -1,11 +1,14 @@
 from homeassistant.components.sensor import SensorEntity, SensorStateClass
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
+from . import settings as gw_settings
+
 
 async def async_setup_entry(hass, entry, async_add_entities):
     coord = hass.data["goodwe_local"][entry.entry_id]
     ents = [GoodWeSensor(coord, s) for s in coord.inverter.sensors() if s.id_]
     ents.append(ScheduleStatus(coord))
+    ents += gw_settings.build(coord)[1]
     async_add_entities(ents)
 
 

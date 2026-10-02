@@ -7,6 +7,22 @@ Lokalne (bez chmury SEMS) monitorowanie i sterowanie inwerterem GoodWe, z harmon
 - Tryb pracy, limit eksportu do sieci, DoD baterii
 - Harmonogram: 4 przedziały czasowe (także przez północ), dla każdego akcja (ładowanie / rozładowanie / wyłączony), moc w % mocy znamionowej i docelowy SOC
 - Sensor „Status harmonogramu”, ustawienia zapisywane trwale
+- **Wszystkie parametry inwertera**: automatycznie wykrywane przy starcie (zależnie od modelu i firmware), widoczne jako encje „Ustawienie: …” (domyślnie wyłączone – włącz potrzebne w ustawieniach urządzenia)
+- Przyciski: synchronizacja zegara inwertera, odświeżenie danych
+- Usługi: `goodwe_local.read_setting`, `write_setting`, `list_settings`, `set_operation_mode`, `sync_time`
+
+## Edycja parametrów
+Domyślnie parametry są **tylko do odczytu**. Aby je edytować: Ustawienia → Urządzenia i usługi → GoodWe Local → **Konfiguruj** → zaznacz „Pozwól edytować wszystkie parametry”. Parametry liczbowe staną się edytowalne; złożone (np. grupy eco_mode, czasy) pozostają do odczytu – zapiszesz je usługą `write_setting`.
+
+> ⚠️ Niektóre parametry dotyczą zabezpieczeń sieciowych (napięcia, częstotliwości) i baterii. Błędna wartość może wyłączyć inwerter lub naruszyć warunki przyłączenia OSD. Zmieniaj tylko to, co rozumiesz.
+
+Przykład:
+```yaml
+action: goodwe_local.write_setting
+data:
+  setting: grid_export_limit
+  value: 3000
+```
 
 ## Instalacja
 **HACS:** HACS → Integracje → ⋮ → Własne repozytoria → dodaj URL repozytorium (kategoria: Integration) → zainstaluj → restart HA.
@@ -29,4 +45,4 @@ Co 30 s integracja sprawdza aktywny przedział i tylko przy zmianie wysyła pole
 - Gdy HA nie działa, inwerter pozostaje w ostatnim trybie.
 - Serie DT/SDT (bez baterii) nie obsługują harmonogramu.
 
-Bazuje na bibliotece [goodwe](https://github.com/marcelblijleven/goodwe). Licencja MIT.
+Bazuje na bibliotece [goodwe](https://github.com/marcelblijleven/goodwe). Licencja MIT. Wersja 1.1.0.

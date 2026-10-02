@@ -1,1 +1,95 @@
-{"config":{"step":{"user":{"title":"GoodWe Local","data":{"host":"Adres IP inwertera","port":"Port (8899 UDP lub 502 Modbus TCP)"}}},"error":{"cannot_connect":"Nie można połączyć się z inwerterem"},"abort":{"already_configured":"Ten inwerter jest już skonfigurowany"}}}
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "GoodWe Local",
+        "data": {
+          "host": "Adres IP inwertera",
+          "port": "Port (8899 UDP lub 502 Modbus TCP)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Nie można połączyć się z inwerterem"
+    },
+    "abort": {
+      "already_configured": "Ten inwerter jest już skonfigurowany"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opcje zaawansowane",
+        "description": "UWAGA: edycja parametrów może zmienić zabezpieczenia sieciowe i ustawienia baterii. Zmieniaj tylko parametry, które rozumiesz.",
+        "data": {
+          "advanced_write": "Pozwól edytować wszystkie parametry inwertera"
+        }
+      }
+    }
+  },
+  "services": {
+    "read_setting": {
+      "name": "Odczytaj parametr",
+      "description": "Odczytuje dowolny parametr inwertera.",
+      "fields": {
+        "setting": {
+          "name": "ID parametru"
+        },
+        "serial": {
+          "name": "Numer seryjny (opcjonalnie)"
+        }
+      }
+    },
+    "write_setting": {
+      "name": "Zapisz parametr",
+      "description": "Zapisuje dowolny parametr inwertera.",
+      "fields": {
+        "setting": {
+          "name": "ID parametru"
+        },
+        "value": {
+          "name": "Wartość"
+        },
+        "serial": {
+          "name": "Numer seryjny (opcjonalnie)"
+        }
+      }
+    },
+    "list_settings": {
+      "name": "Lista parametrów",
+      "description": "Zwraca listę parametrów obsługiwanych przez model.",
+      "fields": {
+        "serial": {
+          "name": "Numer seryjny (opcjonalnie)"
+        }
+      }
+    },
+    "set_operation_mode": {
+      "name": "Ustaw tryb pracy",
+      "description": "Ustawia tryb pracy z mocą i SOC dla trybów eco.",
+      "fields": {
+        "mode": {
+          "name": "Tryb"
+        },
+        "power": {
+          "name": "Moc"
+        },
+        "soc": {
+          "name": "SOC"
+        },
+        "serial": {
+          "name": "Numer seryjny (opcjonalnie)"
+        }
+      }
+    },
+    "sync_time": {
+      "name": "Synchronizuj zegar",
+      "description": "Ustawia zegar inwertera na czas HA.",
+      "fields": {
+        "serial": {
+          "name": "Numer seryjny (opcjonalnie)"
+        }
+      }
+    }
+  }
+}

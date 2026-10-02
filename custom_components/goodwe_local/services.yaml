@@ -1,0 +1,23 @@
+read_setting:
+  fields:
+    setting: {required: true, example: "grid_export_limit", selector: {text: {}}}
+    serial: {selector: {text: {}}}
+write_setting:
+  fields:
+    setting: {required: true, example: "grid_export_limit", selector: {text: {}}}
+    value: {required: true, example: 5000, selector: {text: {}}}
+    serial: {selector: {text: {}}}
+list_settings:
+  fields:
+    serial: {selector: {text: {}}}
+set_operation_mode:
+  fields:
+    mode:
+      required: true
+      selector: {select: {options: [general, off_grid, backup, eco, peak_shaving, self_use, eco_charge, eco_discharge]}}
+    power: {selector: {number: {min: 1, max: 100, unit_of_measurement: "%"}}}
+    soc: {selector: {number: {min: 0, max: 100, unit_of_measurement: "%"}}}
+    serial: {selector: {text: {}}}
+sync_time:
+  fields:
+    serial: {selector: {text: {}}}

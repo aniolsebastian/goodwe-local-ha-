@@ -1,6 +1,7 @@
 from homeassistant.components.number import NumberEntity, NumberMode
 
 from .scheduler import SLOTS, SlotEntity
+from . import settings as gw_settings
 
 
 async def async_setup_entry(hass, entry, async_add_entities):
@@ -18,6 +19,9 @@ async def async_setup_entry(hass, entry, async_add_entities):
         slot_ents.append(SlotNumber(coord, i, "power", "moc", 1, 100, "mdi:flash"))
         slot_ents.append(SlotNumber(coord, i, "soc", "docelowy SOC", 0, 100, "mdi:battery-high"))
     async_add_entities(slot_ents)
+
+    numbers, _ = gw_settings.build(coord)
+    async_add_entities(numbers)
 
 
 class GoodWeNumber(NumberEntity):

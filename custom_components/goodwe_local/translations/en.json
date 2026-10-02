@@ -1,1 +1,95 @@
-{"config":{"step":{"user":{"title":"GoodWe Local","data":{"host":"Inverter IP address","port":"Port (8899 UDP or 502 Modbus TCP)"}}},"error":{"cannot_connect":"Cannot connect to inverter"},"abort":{"already_configured":"Inverter already configured"}}}
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "GoodWe Local",
+        "data": {
+          "host": "Inverter IP address",
+          "port": "Port (8899 UDP or 502 Modbus TCP)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot connect to inverter"
+    },
+    "abort": {
+      "already_configured": "Inverter already configured"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Advanced options",
+        "description": "WARNING: editing parameters may change grid protection and battery settings.",
+        "data": {
+          "advanced_write": "Allow editing all inverter parameters"
+        }
+      }
+    }
+  },
+  "services": {
+    "read_setting": {
+      "name": "Read setting",
+      "description": "Reads any inverter setting.",
+      "fields": {
+        "setting": {
+          "name": "Setting ID"
+        },
+        "serial": {
+          "name": "Serial (optional)"
+        }
+      }
+    },
+    "write_setting": {
+      "name": "Write setting",
+      "description": "Writes any inverter setting.",
+      "fields": {
+        "setting": {
+          "name": "Setting ID"
+        },
+        "value": {
+          "name": "Value"
+        },
+        "serial": {
+          "name": "Serial (optional)"
+        }
+      }
+    },
+    "list_settings": {
+      "name": "List settings",
+      "description": "Lists settings supported by the model.",
+      "fields": {
+        "serial": {
+          "name": "Serial (optional)"
+        }
+      }
+    },
+    "set_operation_mode": {
+      "name": "Set operation mode",
+      "description": "Sets operation mode.",
+      "fields": {
+        "mode": {
+          "name": "Mode"
+        },
+        "power": {
+          "name": "Power"
+        },
+        "soc": {
+          "name": "SOC"
+        },
+        "serial": {
+          "name": "Serial (optional)"
+        }
+      }
+    },
+    "sync_time": {
+      "name": "Sync clock",
+      "description": "Sets inverter clock to HA time.",
+      "fields": {
+        "serial": {
+          "name": "Serial (optional)"
+        }
+      }
+    }
+  }
+}
