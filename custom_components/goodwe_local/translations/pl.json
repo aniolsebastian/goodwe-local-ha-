@@ -1,0 +1,1 @@
+{"config":{"step":{"user":{"title":"GoodWe Local","data":{"host":"Adres IP inwertera","port":"Port (8899 UDP lub 502 Modbus TCP)"}}},"error":{"cannot_connect":"Nie można połączyć się z inwerterem"},"abort":{"already_configured":"Ten inwerter jest już skonfigurowany"}}}

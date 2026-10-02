@@ -1,0 +1,12 @@
+{
+  "domain": "goodwe_local",
+  "name": "GoodWe Local",
+  "version": "1.0.0",
+  "config_flow": true,
+  "iot_class": "local_polling",
+  "integration_type": "device",
+  "requirements": ["goodwe>=0.3.6"],
+  "codeowners": [],
+  "documentation": "https://github.com/aniolsebastian/goodwe-local-ha",
+  "issue_tracker": "https://github.com/aniolsebastian/goodwe-local-ha/issues"
+}
